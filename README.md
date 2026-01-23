@@ -1,70 +1,131 @@
-# Getting Started with Create React App
+🍔 Burger Builder Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack React application that allows users to build custom burgers, place orders, authenticate securely, and view order history.
+This project demonstrates React, Redux, Routing, Authentication, and Firebase deployment in one complete application.
 
-## Available Scripts
+🚀 Live Demo
 
-In the project directory, you can run:
+👉 (Add Firebase Hosting URL after deployment)
+Example: https://burger-builder-xxxx.web.app
 
-### `npm start`
+🛠️ Tech Stack
+Frontend
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+React (Vite / CRA)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+React Router DOM
 
-### `npm test`
+Redux Toolkit
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Formik + Yup (Forms & Validation)
 
-### `npm run build`
+CSS / Bootstrap / Tailwind (UI)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Backend & Services
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Firebase Authentication
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Firebase Realtime Database / Firestore
 
-### `npm run eject`
+Firebase Hosting
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+✨ Features
+Burger Builder
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Add & remove ingredients dynamically
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Live burger preview
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Real-time price calculation
 
-## Learn More
+Order summary modal
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Orders & Checkout
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Checkout form
 
-### Code Splitting
+Save orders to database
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Fetch previous orders
 
-### Analyzing the Bundle Size
+User-specific order history
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Authentication
 
-### Making a Progressive Web App
+Sign Up & Login
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Form validation using Formik + Yup
 
-### Advanced Configuration
+Firebase Authentication
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Auth token stored in Redux & Local Storage
 
-### Deployment
+Protected routes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Logout functionality
 
-### `npm run build` fails to minify
+UX Enhancements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Loading spinner
+
+Error handling
+
+Clean UI navigation
+
+Deployment
+
+Firebase Hosting
+
+Production build optimization
+
+src/
+ ├── components/
+ │   ├── Burger/
+ │   ├── BuildControls/
+ │   ├── Navigation/
+ │   ├── UI/
+ ├── pages/
+ │   ├── BurgerBuilder.jsx
+ │   ├── Checkout.jsx
+ │   ├── Orders.jsx
+ │   ├── Auth.jsx
+ ├── store/
+ │   ├── index.js
+ │   ├── burgerSlice.js
+ │   ├── authSlice.js
+ │   ├── orderSlice.js
+ ├── services/
+ │   ├── firebase.js
+ │   ├── api.js
+ ├── App.jsx
+ ├── main.jsx
+
+
+
+🔀 Application Flow
+
+User builds a burger
+
+Views order summary
+
+Authenticates (login/signup)
+
+Proceeds to checkout
+
+Order saved to Firebase
+
+User can view past orders
+
+Logout securely
+
+🔐 Authentication Flow
+
+Firebase handles login/signup
+
+Token stored in Redux
+
+Token persisted in Local Storage
+
+Auto-login on refresh
+
+Protected routes enabled
