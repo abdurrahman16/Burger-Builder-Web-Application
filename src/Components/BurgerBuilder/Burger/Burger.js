@@ -1,17 +1,31 @@
 import React from 'react'
 import Ingredient from '../Ingredient/Ingredient'   
+import './Burger.css'
 
+const Burger = props => {
+  let ingridientArr = props.ingridients
+    .map(item => {
+      let amountArr = [...Array(item.amount).keys()]
+      return amountArr.map(_ => (
+        <Ingredient key={Math.random()} type={item.type} />
+      ))
+    })
+    .reduce((arr, element) => arr.concat(element), [])
 
-const Burger=props => {
+  if (ingridientArr.length === 0) {
+    ingridientArr = <p>Please start adding ingredients!</p>
+  }
+
   return (
-    <div>
-        <Ingredient type="bread-top"/>
-        <Ingredient type="salad"/>
-        <Ingredient type="cheese"/>
-        <Ingredient type="meat"/>
-        <Ingredient type="bread-bottom"/>
+    <div className='Burger'>
+      {/* FIXED TOP */}
+      <Ingredient type="bread-top" />
 
+      {/* DYNAMIC INGREDIENTS */}
+      {ingridientArr}
 
+      {/* FIXED BOTTOM */}
+      <Ingredient type="bread-bottom" />
     </div>
   )
 }
