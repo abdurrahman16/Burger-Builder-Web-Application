@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Burger from './Burger/Burger.js'
+import Controls from './Controls/Controls.js'
 
 export class BurgerBuilder extends Component {
   state ={
@@ -21,6 +22,7 @@ export class BurgerBuilder extends Component {
     return (
       <div>
         <Burger  ingridients={this.state.ingridients}/>
+        <Controls/>
       </div>
     )
   }
