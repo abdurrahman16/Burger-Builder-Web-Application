@@ -5,10 +5,9 @@ import {
   Navbar,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
+  NavItem
 } from 'reactstrap';
-
+import { NavLink } from 'react-router-dom';
 const Header = () => {
     return (
         <div className="Navigation">
@@ -21,7 +20,10 @@ const Header = () => {
                 </NavbarBrand>
                 <Nav className="mr-md-5">
                     <NavItem>
-                        <NavLink href="#" className="NavLink" style={{color:'white'}}>Something</NavLink>
+                        <NavLink to="/" className="NavLink" style={{color:'white'}}>🌸サクラバーガービルダ🌸 </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to="/orders" className="NavLink" style={{color:'white'}}> Order</NavLink>
                     </NavItem>
                 </Nav>
             </Navbar>

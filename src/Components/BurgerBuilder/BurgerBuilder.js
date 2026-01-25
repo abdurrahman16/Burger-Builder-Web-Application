@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Burger from './Burger/Burger';
 import Controls from './Controls/Controls';
-import {Modal, ModalHeader, ModalBody, ModalFooter, Button} from 'reactstrap';
-
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+import Summary from './Summary/Summary';
+import { Navigate } from 'react-router-dom';
 
 const INGREDIENT_PRICES = {
   salad: 20,
@@ -20,7 +21,8 @@ export class BurgerBuilder extends Component {
       { type: 'meat', amount: 0 }
     ],
     totalPrice: 80,
-    modalOpen:false
+    modalOpen: false,
+    checkout: false
   };
 
   addIngridientHandle = (type) => {
@@ -59,30 +61,44 @@ export class BurgerBuilder extends Component {
     });
   };
 
-  toggleModal=()=>{
-    this.setState({modalOpen: !this.state.modalOpen});
-  }
+  toggleModal = () => {
+    this.setState({ modalOpen: !this.state.modalOpen });
+  };
+
+  handleCheckout = () => {
+    this.setState({ checkout: true });
+  };
 
   render() {
+    if (this.state.checkout) {
+      return <Navigate to="/checkout" />;
+    }
+
     return (
       <div>
         <div>
-        <Burger ingridients={this.state.ingridients} />
-        <Controls
-          price={this.state.totalPrice}
-          ingridientAdded={this.addIngridientHandle}
-          ingridientRemoved={this.removeIngridientHandle}
-          toggleModal={this.toggleModal}
-        />
-      </div>
-      <Modal isOpen={this.state.modalOpen}>
-        <ModalHeader>Your Order Summary</ModalHeader>
-        <ModalBody>
-          <p>Total Price: {this.state.totalPrice.toFixed(0)} BDT</p>
+          <Burger ingridients={this.state.ingridients} />
+          <Controls
+            price={this.state.totalPrice}
+            ingridientAdded={this.addIngridientHandle}
+            ingridientRemoved={this.removeIngridientHandle}
+            toggleModal={this.toggleModal}
+          />
+        </div>
+
+        <Modal isOpen={this.state.modalOpen}>
+          <ModalHeader>Your Order Summary</ModalHeader>
+          <ModalBody>
+            <Summary ingridients={this.state.ingridients} />
+            <p>Total Price: {this.state.totalPrice.toFixed(0)} BDT</p>
           </ModalBody>
           <ModalFooter>
-          <Button color="success" onClick={this.toggleModal}> Continue to Checkout</Button>
-          <Button color="secondary" onClick={this.toggleModal}> Cancel</Button>
+            <Button color="success" onClick={this.handleCheckout}>
+              Continue to Checkout
+            </Button>
+            <Button color="secondary" onClick={this.toggleModal}>
+              Cancel
+            </Button>
           </ModalFooter>
         </Modal>
       </div>
