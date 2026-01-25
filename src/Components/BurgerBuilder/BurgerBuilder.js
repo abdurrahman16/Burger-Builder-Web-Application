@@ -18,11 +18,38 @@ export class BurgerBuilder extends Component {
       
     ]
   }
+addIngridientHandle = (type) => {
+  const ingridients = [...this.state.ingridients];
+
+  for (let item of ingridients) {
+    if (item.type === type) {
+      item.amount += 1;
+    }
+  }
+
+  this.setState({ ingridients });
+};
+
+removeIngridientHandle = (type) => {
+  const ingridients = [...this.state.ingridients];
+
+  for (let item of ingridients) {
+    if (item.type === type && item.amount > 0) {
+      item.amount -= 1;
+    }
+  }
+
+  this.setState({ ingridients });
+};
+ 
   render() {
     return (
       <div>
         <Burger  ingridients={this.state.ingridients}/>
-        <Controls/>
+        <Controls
+        ingridientAdded={this.addIngridientHandle}
+        ingridientRemoved={this.removeIngridientHandle}
+        />
       </div>
     )
   }
