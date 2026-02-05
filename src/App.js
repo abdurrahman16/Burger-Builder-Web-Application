@@ -2,7 +2,7 @@ import Main from './Components/Main.js';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from './redux/store.js';
+import store from "./redux/store";
 
 function App() {
   return (
