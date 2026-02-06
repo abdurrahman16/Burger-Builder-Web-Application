@@ -54,6 +54,11 @@ export const reducer = (state = INITIAL_STATE, action) => {
         totalPrice
       };
     }
+    case actionType.RESETSET_INGRIDIENTS: {
+      return {
+        ...INITIAL_STATE
+      };
+    }
 
     default:
       return state;
