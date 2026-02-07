@@ -1,4 +1,6 @@
 import * as actionType from './actionType';
+import axios from 'axios';
+
 
 export const addIngridient = (igType) => {
   return {
@@ -25,3 +27,23 @@ export const resetsetIngridients = () => {
     type: actionType.RESETSET_INGRIDIENTS
   };
 };
+
+export const loadOrders = (orders) => {
+  return {
+    type: actionType.LOAD_ORDERS,
+    payload: orders
+  };
+};
+
+export const orderLoadFailed = () => {
+  return {
+    type: actionType.ORDER_LOAD_FAILED
+  };
+};
+
+export const fetchOrders = () =>  dispatch => {
+axios.get('https://burger-builder-8d3f7-default-rtdb.firebaseio.com/orders.json')
+.then(response => {
+  dispatch(loadOrders(response.data)); }
+
+)};
