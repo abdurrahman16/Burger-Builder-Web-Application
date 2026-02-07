@@ -41,9 +41,20 @@ export const orderLoadFailed = () => {
   };
 };
 
-export const fetchOrders = () =>  dispatch => {
-axios.get('https://burger-builder-8d3f7-default-rtdb.firebaseio.com/orders.json')
-.then(response => {
-  dispatch(loadOrders(response.data)); }
+export const fetchOrders = () => (dispatch) => {
+  axios
+    .get("https://sakura-restaurent-default-rtdb.firebaseio.com/orders.json")
+    .then((response) => {
+      const data = response.data;
 
-)};
+      const ordersArray = data
+        ? Object.keys(data).map((key) => ({ id: key, ...data[key] }))
+        : [];
+
+      dispatch(loadOrders(ordersArray));
+    })
+    .catch((error) => {
+      console.log("fetchOrders error:", error.response?.status, error.message);
+      dispatch(orderLoadFailed());
+    });
+};
