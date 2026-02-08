@@ -20,10 +20,13 @@ const Header = () => {
                 </NavbarBrand>
                 <Nav className="mr-md-5">
                     <NavItem>
-                        <NavLink to="/" className="NavLink" style={{color:'white'}}>🌸サクラバーガービルダ🌸 </NavLink>
+                        <NavLink to="/login" className="NavLink" style={{color:'white', marginLeft:'10px'}}> Login</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink to="/orders" className="NavLink" style={{color:'white'}}> Order</NavLink>
+                        <NavLink to="/" className="NavLink" style={{color:'white', marginLeft:'10px'}}>Home </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to="/orders" className="NavLink" style={{color:'white', marginLeft:'10px'}}> Order</NavLink>
                     </NavItem>
                 </Nav>
             </Navbar>
