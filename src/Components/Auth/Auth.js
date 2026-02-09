@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
+import { auth } from "../../redux/AuthActionCreators";
+import { connect } from "react-redux";
+
+const mapDispatchToProps = (dispatch) => ({
+  // ✅ match your AuthActionCreators: auth(email, password, isSignup)
+  auth: (email, password, isSignup) => dispatch(auth(email, password, isSignup)),
+});
 
 export class Auth extends Component {
   state = { mode: "Sign Up" };
@@ -91,7 +98,9 @@ export class Auth extends Component {
               </p>
             </div>
 
+            {/* ✅ prevent form submit */}
             <button
+              type="button"
               onClick={() => this.setState({ mode: isSignup ? "Login" : "Sign Up" })}
               style={s.switchBtn}
             >
@@ -111,12 +120,10 @@ export class Auth extends Component {
 
               return e;
             }}
-            onSubmit={(values, { setSubmitting, resetForm }) => {
-              setTimeout(() => {
-                alert(`${isSignup ? "SIGN UP" : "LOGIN"}\n\n` + JSON.stringify(values, null, 2));
-                setSubmitting(false);
-                resetForm();
-              }, 400);
+            onSubmit={(values, { setSubmitting }) => {
+              // ✅ submit to redux action creator (signup/login based on mode)
+              this.props.auth(values.email, values.password, isSignup);
+              setSubmitting(false);
             }}
           >
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
@@ -187,4 +194,4 @@ export class Auth extends Component {
   }
 }
 
-export default Auth;
+export default connect(null, mapDispatchToProps)(Auth);
